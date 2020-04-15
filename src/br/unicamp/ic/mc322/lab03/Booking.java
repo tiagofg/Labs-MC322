@@ -1,4 +1,4 @@
-package lab03;
+package br.unicamp.ic.mc322.lab03;
 
 public class Booking {
 

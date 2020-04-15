@@ -1,4 +1,4 @@
-package lab02;
+package br.unicamp.ic.mc322.lab02;
 
 import java.util.*;
 import java.util.stream.Collectors;

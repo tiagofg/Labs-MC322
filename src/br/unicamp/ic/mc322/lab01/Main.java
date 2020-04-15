@@ -1,4 +1,4 @@
-package lab01;
+package br.unicamp.ic.mc322.lab01;
 
 public class Main {
 
