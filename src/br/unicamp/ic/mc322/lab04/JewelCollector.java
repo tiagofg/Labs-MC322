@@ -7,6 +7,7 @@ import static br.unicamp.ic.mc322.lab04.enums.ObstacleEnum.*;
 
 public class JewelCollector {
 
+    //possíveis comandos do usuário
     private static final String QUIT = "quit";
     private static final String W = "w";
     private static final String A = "a";
@@ -44,6 +45,7 @@ public class JewelCollector {
         boolean running = true;
 
         while (running) {
+            //fim de jogo
             if (map.getTotalJewels() == 0) {
                 System.out.println("Parabéns, você coletou todas as joias!!");
                 break;
@@ -68,6 +70,7 @@ public class JewelCollector {
                     map.moveRobot(command);
                     break;
                 default:
+                    //tecla diferente das permitidas
                     System.err.println("Comando inválido!!");
             }
         }

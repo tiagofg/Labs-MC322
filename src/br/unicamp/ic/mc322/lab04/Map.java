@@ -18,12 +18,17 @@ public class Map {
     private List<Obstacle> obstacles;
     private Robot robot;
 
+    //códigos do mapa
     private static final String BLANK_SPACE = "--";
     private static final String ROBOT_CODE = "ME";
+
+    //teclas de movimentação
     private static final String UP = "w";
     private static final String LEFT = "a";
     private static final String DOWN = "s";
     private static final String RIGHT = "d";
+
+    //mensagens de erro
     private static final String OBSTACLE_MESSAGE = "Tente se mover em outra direção, essa possui um obstáculo!!";
     private static final String AVAILABLE_JEWEL_MESSAGE = "Aperte g para coletar a joia antes de se mover!!";
     private static final String INVALID_POSITION_MESSAGE = "Posição inválida, impossível se mover nessa direção!!";
@@ -37,6 +42,7 @@ public class Map {
         fillMap();
     }
 
+    //iniciando mapa com todas as posições vazias
     private void fillMap() {
         map = new String[rows][columns];
 
@@ -119,18 +125,22 @@ public class Map {
         map[x][y] = ROBOT_CODE;
     }
 
+    //verificando se as coordenadas estão dentro do mapa
     private boolean validPosition(Integer x, Integer y) {
         return (x >= 0 && x < rows) && (y >= 0 && y < columns);
     }
 
+    //verificando se as coordenadas possuem um obstáculo
     private boolean hasObstacle(Integer x, Integer y) {
         return validPosition(x, y) && (map[x][y].equals(WATER.getCode()) || map[x][y].equals(TREE.getCode()));
     }
 
+    //verificando se as coordenadas possuem uma joia
     private boolean hasJewel(Integer x, Integer y) {
         return validPosition(x, y) && (map[x][y].equals(RED.getCode()) || map[x][y].equals(GREEN.getCode()) || map[x][y].equals(BLUE.getCode()));
     }
 
+    //verificando se existe algum impedimento para movimentação do robô
     private boolean invalidMovement(Integer x, Integer y) {
         if (hasObstacle(x, y)) {
             System.err.println(OBSTACLE_MESSAGE);
@@ -204,26 +214,31 @@ public class Map {
         Integer x = robot.getX();
         Integer y = robot.getY();
 
+        //verificando se existe uma joia acima do robô
         if (hasJewel(x - 1, y)) {
             catchJewel(x - 1, y);
             jewelsCollected++;
         }
 
+        //verificando se existe uma joia a esquerda do robô
         if (hasJewel(x, y - 1)) {
             catchJewel(x, y - 1);
             jewelsCollected++;
         }
 
+        //verificando se existe uma joia embaixo do robô
         if (hasJewel(x + 1, y)) {
             catchJewel(x + 1, y);
             jewelsCollected++;
         }
 
+        //verificando se existe uma joia a direita do robô
         if (hasJewel(x, y + 1)) {
             catchJewel(x, y + 1);
             jewelsCollected++;
         }
 
+        //Mensagem de erro caso não seja possível coletar nenhuma joia
         if (jewelsCollected.equals(0)) {
             System.err.println("Não é possível coletar nenhuma joia!!");
         }
