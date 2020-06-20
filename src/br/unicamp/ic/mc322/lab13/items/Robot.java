@@ -1,6 +1,6 @@
 package br.unicamp.ic.mc322.lab13.items;
 
-import br.unicamp.ic.mc322.lab04.Position;
+import br.unicamp.ic.mc322.lab13.map.Position;
 import br.unicamp.ic.mc322.lab13.exceptions.RobotOutOfEnergyException;
 
 import java.util.ArrayList;
@@ -102,16 +102,6 @@ public class Robot implements Item {
     @Override
     public boolean canCollect() {
         return false;
-    }
-
-    @Override
-    public Integer getEnergyPoints() {
-        return energyPoints;
-    }
-
-    @Override
-    public void resetEnergyPoints() {
-        this.energyPoints = 0;
     }
 
     @Override

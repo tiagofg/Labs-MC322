@@ -2,7 +2,7 @@ package br.unicamp.ic.mc322.lab13.items;
 
 import br.unicamp.ic.mc322.lab13.enums.ColorEnum;
 
-public class Jewel implements Item {
+public class Jewel implements Item, Rechargeable {
 
     private ColorEnum color;
     private Integer energyPoints;

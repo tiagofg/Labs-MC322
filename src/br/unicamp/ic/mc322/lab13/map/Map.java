@@ -130,8 +130,10 @@ public class Map {
 
     private void rechargeIfPossible(Integer x, Integer y) {
         if (validPosition(x, y) && map[x][y].canUseToRecharge()) {
-            robot.recharge(map[x][y].getEnergyPoints());
-            map[x][y].resetEnergyPoints();
+            Rechargeable rechargeable = (Rechargeable) map[x][y];
+
+            robot.recharge(rechargeable.getEnergyPoints());
+            rechargeable.resetEnergyPoints();
         }
     }
 

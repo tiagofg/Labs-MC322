@@ -7,8 +7,4 @@ public interface Item {
     boolean canCollect();
 
     boolean canUseToRecharge();
-
-    Integer getEnergyPoints();
-
-    void resetEnergyPoints();
 }

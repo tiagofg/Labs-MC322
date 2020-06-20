@@ -2,7 +2,7 @@ package br.unicamp.ic.mc322.lab13.items;
 
 import br.unicamp.ic.mc322.lab13.enums.ObstacleEnum;
 
-public class Obstacle implements Item {
+public class Obstacle implements Item, Rechargeable {
 
     private ObstacleEnum obstacleType;
     private Integer energyPoints;
@@ -10,10 +10,6 @@ public class Obstacle implements Item {
     public Obstacle(ObstacleEnum obstacleType) {
         this.obstacleType = obstacleType;
         this.energyPoints = obstacleType.getEnergyPoints();
-    }
-
-    public ObstacleEnum getObstacleType() {
-        return obstacleType;
     }
 
     @Override

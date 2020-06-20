@@ -20,16 +20,6 @@ public class BlankSpace implements Item {
     }
 
     @Override
-    public Integer getEnergyPoints() {
-        return 0;
-    }
-
-    @Override
-    public void resetEnergyPoints() {
-        return;
-    }
-
-    @Override
     public String toString() {
         return BLANK_SPACE;
     }
