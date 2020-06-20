@@ -1,34 +1,14 @@
 package br.unicamp.ic.mc322.lab13.items;
 
-import br.unicamp.ic.mc322.lab13.map.Position;
+public interface Item {
 
-public abstract class Item {
+    boolean isOccupied();
 
-    private Position position;
+    boolean canCollect();
 
-    public Item(Integer x, Integer y) {
-        this.position = new Position(x, y);
-    }
+    boolean canUseToRecharge();
 
-    public Position getPosition() {
-        return position;
-    }
+    Integer getEnergyPoints();
 
-    public Integer getX() {
-        return position.getX();
-    }
-
-    public Integer getY() {
-        return position.getY();
-    }
-
-    public abstract boolean isOccupied();
-
-    public abstract boolean canCollect();
-
-    public abstract boolean canUseToRecharge();
-
-    public abstract Integer getEnergyPoints();
-
-    public abstract void setEnergyPoints(Integer energyPoints);
+    void resetEnergyPoints();
 }

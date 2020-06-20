@@ -44,7 +44,7 @@ public class Map {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                map[i][j] = new BlankSpace(i, j);
+                map[i][j] = new BlankSpace();
             }
         }
     }
@@ -54,15 +54,12 @@ public class Map {
             throw new InvalidPositionException(IMPOSSIBLE_TO_ADD_JEWEL);
         }
 
-        map[x][y] = new Jewel(x, y, color);
+        map[x][y] = new Jewel(color);
         totalJewels++;
     }
 
-    public void removeJewel(Jewel jewel) {
-        Integer x = jewel.getX();
-        Integer y = jewel.getY();
-
-        map[x][y] = new BlankSpace(x, y);
+    public void removeJewel(Integer x, Integer y) {
+        map[x][y] = new BlankSpace();
         totalJewels--;
     }
 
@@ -71,7 +68,7 @@ public class Map {
             throw new InvalidPositionException(IMPOSSIBLE_TO_ADD_OBSTACLE);
         }
 
-        map[x][y] = new Obstacle(x, y, type);
+        map[x][y] = new Obstacle(type);
     }
 
     public void createRobot(Integer x, Integer y) {
@@ -98,29 +95,25 @@ public class Map {
             switch (key.toLowerCase()) {
                 case W:
                     verifyMovement(currentX - 1, currentY);
-
-                    map[currentX][currentY] = new BlankSpace(currentX, currentY);
+                    map[currentX][currentY] = new BlankSpace();
                     robot.moveNorth();
 
                     break;
                 case A:
                     verifyMovement(currentX, currentY - 1);
-
-                    map[currentX][currentY] = new BlankSpace(currentX, currentY);
+                    map[currentX][currentY] = new BlankSpace();
                     robot.moveWest();
 
                     break;
                 case S:
                     verifyMovement(currentX + 1, currentY);
-
-                    map[currentX][currentY] = new BlankSpace(currentX, currentY);
+                    map[currentX][currentY] = new BlankSpace();
                     robot.moveSouth();
 
                     break;
                 case D:
                     verifyMovement(currentX, currentY + 1);
-
-                    map[currentX][currentY] = new BlankSpace(currentX, currentY);
+                    map[currentX][currentY] = new BlankSpace();
                     robot.moveEast();
 
                     break;
@@ -138,7 +131,7 @@ public class Map {
     private void rechargeIfPossible(Integer x, Integer y) {
         if (validPosition(x, y) && map[x][y].canUseToRecharge()) {
             robot.recharge(map[x][y].getEnergyPoints());
-            map[x][y].setEnergyPoints(0);
+            map[x][y].resetEnergyPoints();
         }
     }
 
@@ -157,7 +150,7 @@ public class Map {
             Jewel jewel = (Jewel) map[x][y];
 
             robot.collectJewel(jewel);
-            removeJewel(jewel);
+            removeJewel(x, y);
         }
     }
 

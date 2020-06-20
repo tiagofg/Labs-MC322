@@ -2,13 +2,12 @@ package br.unicamp.ic.mc322.lab13.items;
 
 import br.unicamp.ic.mc322.lab13.enums.ColorEnum;
 
-public class Jewel extends Item {
+public class Jewel implements Item {
 
     private ColorEnum color;
     private Integer energyPoints;
 
-    public Jewel(Integer x, Integer y, ColorEnum color) {
-        super(x, y);
+    public Jewel(ColorEnum color) {
         this.color = color;
         this.energyPoints = color.getEnergyPoints();
     }
@@ -38,8 +37,8 @@ public class Jewel extends Item {
     }
 
     @Override
-    public void setEnergyPoints(Integer energyPoints) {
-        this.energyPoints = energyPoints;
+    public void resetEnergyPoints() {
+        this.energyPoints = 0;
     }
 
     @Override

@@ -2,13 +2,12 @@ package br.unicamp.ic.mc322.lab13.items;
 
 import br.unicamp.ic.mc322.lab13.enums.ObstacleEnum;
 
-public class Obstacle extends Item {
+public class Obstacle implements Item {
 
     private ObstacleEnum obstacleType;
     private Integer energyPoints;
 
-    public Obstacle(Integer x, Integer y, ObstacleEnum obstacleType) {
-        super(x, y);
+    public Obstacle(ObstacleEnum obstacleType) {
         this.obstacleType = obstacleType;
         this.energyPoints = obstacleType.getEnergyPoints();
     }
@@ -38,8 +37,8 @@ public class Obstacle extends Item {
     }
 
     @Override
-    public void setEnergyPoints(Integer energyPoints) {
-        this.energyPoints = energyPoints;
+    public void resetEnergyPoints() {
+        this.energyPoints = 0;
     }
 
     @Override

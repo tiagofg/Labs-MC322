@@ -1,12 +1,8 @@
 package br.unicamp.ic.mc322.lab13.items;
 
-public class BlankSpace extends Item {
+public class BlankSpace implements Item {
 
     private static final String BLANK_SPACE = "--";
-
-    public BlankSpace(Integer x, Integer y) {
-        super(x, y);
-    }
 
     @Override
     public boolean isOccupied() {
@@ -29,8 +25,8 @@ public class BlankSpace extends Item {
     }
 
     @Override
-    public void setEnergyPoints(Integer energyPoints) {
-
+    public void resetEnergyPoints() {
+        return;
     }
 
     @Override

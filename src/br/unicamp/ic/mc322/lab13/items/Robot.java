@@ -1,12 +1,14 @@
 package br.unicamp.ic.mc322.lab13.items;
 
+import br.unicamp.ic.mc322.lab04.Position;
 import br.unicamp.ic.mc322.lab13.exceptions.RobotOutOfEnergyException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Robot extends Item {
+public class Robot implements Item {
 
+    private Position position;
     private List<Jewel> bag;
     private Integer energyPoints;
 
@@ -15,9 +17,17 @@ public class Robot extends Item {
     private static final String ROBOT_OUT_OF_ENERGY_MESSAGE = "Impossível se mover, robô sem energia";
 
     public Robot(Integer x, Integer y) {
-        super(x, y);
+        this.position = new Position(x, y);
         this.bag = new ArrayList<>();
         this.energyPoints = START_ENERGY;
+    }
+
+    public Integer getX() {
+        return position.getX();
+    }
+
+    public Integer getY() {
+        return position.getY();
     }
 
     private boolean outOfEnergy() {
@@ -29,8 +39,8 @@ public class Robot extends Item {
             throw new RobotOutOfEnergyException(ROBOT_OUT_OF_ENERGY_MESSAGE);
         }
 
-        this.energyPoints--;
-        this.getPosition().decX();
+        energyPoints--;
+        position.decX();
     }
 
     public void moveSouth() {
@@ -38,8 +48,8 @@ public class Robot extends Item {
             throw new RobotOutOfEnergyException(ROBOT_OUT_OF_ENERGY_MESSAGE);
         }
 
-        this.energyPoints--;
-        this.getPosition().incX();
+        energyPoints--;
+        position.incX();
     }
 
     public void moveEast() {
@@ -47,8 +57,8 @@ public class Robot extends Item {
             throw new RobotOutOfEnergyException(ROBOT_OUT_OF_ENERGY_MESSAGE);
         }
 
-        this.energyPoints--;
-        this.getPosition().incY();
+        energyPoints--;
+        position.incY();
     }
 
     public void moveWest() {
@@ -56,8 +66,8 @@ public class Robot extends Item {
             throw new RobotOutOfEnergyException(ROBOT_OUT_OF_ENERGY_MESSAGE);
         }
 
-        this.energyPoints--;
-        this.getPosition().decY();
+        energyPoints--;
+        position.decY();
     }
 
     public void collectJewel(Jewel jewel) {
@@ -100,8 +110,8 @@ public class Robot extends Item {
     }
 
     @Override
-    public void setEnergyPoints(Integer energyPoints) {
-
+    public void resetEnergyPoints() {
+        this.energyPoints = 0;
     }
 
     @Override
